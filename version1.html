@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>ROBOT</title>
+
+	<!-- Scripts de js incluidos-->
+ 	<script src="blockly/blockly_compressed.js"></script>
+	<script src="blockly/blocks_compressed.js"></script>
+	<script src="blockly/msg/js/es.js"></script>	
+	<script src="blockly/python_compressed.js"></script>
+
+
+	<!-- Estilo de CSS-->
+	<style type="text/css">
+	    html, body {
+	      height: 100%;
+	      margin: 0;
+	    }
+	    body {
+	      background-color: #fff;
+	      font-family: sans-serif;
+	      overflow: hidden;
+	    }
+	    #blocklyArea {
+	      height: 99%;
+	    }
+	    #textarea_python {
+	      height: 99%;
+	      position: absolute;
+	    }
+
+		
+	</style>
+
+	<script>
+  
+
+		function inicio(){
+
+		var blocklyArea = document.getElementById('blocklyArea');
+		var blocklyDiv = document.getElementById('blocklyDiv');
+		var textarea_python = document.getElementById('textarea_python');
+		var options = { 
+				toolbox : toolbox, 
+				media : 'https://blockly-demo.appspot.com/static/media/', 
+				grid:
+		          {spacing: 25,
+		           length: 3,
+		           colour: '#ccc',
+		           snap: true},
+			};
+
+		workspace = Blockly.inject(blocklyDiv, options);
+
+		var onresize = function(e) {
+			// Compute the absolute coordinates and dimensions of blocklyArea.
+			var element = blocklyArea;
+			var x = 0;
+			var y = 0;
+			do {
+				x += element.offsetLeft;
+				y += element.offsetTop;
+				element = element.offsetParent;
+			} while (element);
+			// Position blocklyDiv over blocklyArea.
+			blocklyDiv.style.left = x+10 + 'px';
+			blocklyDiv.style.top = y+10 +'px';
+			blocklyDiv.style.width = blocklyArea.offsetWidth-10 + 'px';
+			blocklyDiv.style.height = blocklyArea.offsetHeight-10 + 'px';
+
+			//Position textarea_python 
+			textarea_python.style.left = x+10 + 'px';
+			textarea_python.style.top = y+10 +'px';
+			textarea_python.style.width = blocklyArea.offsetWidth-10 + 'px';
+			textarea_python.style.height = blocklyArea.offsetHeight-10 + 'px';
+		};
+
+		window.addEventListener('resize', onresize, false);
+		onresize();
+		Blockly.svgResize(workspace);
+
+		document.getElementById('textarea_python').style.display = 'none';
+		}
+
+
+		function load_python(){
+			document.getElementById('blocklyDiv').style.display = 'none';
+			document.getElementById('blocklyArea').style.display = 'none';
+			document.getElementById('textarea_python').style.display = 'inline';
+
+			var code = Blockly.Python.workspaceToCode(workspace);
+			document.getElementById('textarea_python').value = code;
+		}
+
+
+		function load_blockly(){
+			document.getElementById('blocklyDiv').style.display = 'inline';
+			document.getElementById('blocklyArea').style.display = 'inline';
+			document.getElementById('textarea_python').style.display = 'none';
+		}
+
+	</script>
+
+</head>
+ 
+<body onload="inicio()">
+	
+
+<button onclick="load_blockly()"> Blockly </button>
+<button onclick="load_python()"> Python </button>
+
+
+<div id="blocklyArea"> </div>
+
+
+  <div id="blocklyDiv" style="position: absolute"></div>
+  
+	<textarea id="textarea_python" readonly wrap="off"></textarea>
+	<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+	    <category name="Loops" colour="#5CA65C">
+	    <block type="controls_repeat_ext">
+	      <value name="TIMES">
+	        <shadow type="math_number">
+	          <field name="NUM">10</field>
+	        </shadow>
+	      </value>
+	    </block>
+	    <block type="controls_whileUntil">
+	      <field name="MODE">WHILE</field>
+	    </block>
+	    <block type="controls_for">
+	      <field name="VAR">i</field>
+	      <value name="FROM">
+	        <shadow type="math_number">
+	          <field name="NUM">1</field>
+	        </shadow>
+	      </value>
+	      <value name="TO">
+	        <shadow type="math_number">
+	          <field name="NUM">10</field>
+	        </shadow>
+	      </value>
+	      <value name="BY">
+	        <shadow type="math_number">
+	          <field name="NUM">1</field>
+	        </shadow>
+	      </value>
+	    </block>
+	    <block type="controls_forEach">
+	      <field name="VAR">j</field>
+	    </block>
+	    <block type="controls_flow_statements">
+	      <field name="FLOW">BREAK</field>
+	    </block>
+	  </category>
+	  <category name="Logic" colour="#5C81A6">
+	    <block type="controls_if"></block>
+	    <block type="logic_compare">
+	      <field name="OP">EQ</field>
+	    </block>
+	    <block type="logic_operation">
+	      <field name="OP">AND</field>
+	    </block>
+	    <block type="logic_negate"></block>
+	    <block type="logic_boolean">
+	      <field name="BOOL">TRUE</field>
+	    </block>
+	    <block type="logic_null"></block>
+	  </category>
+	  <category name="Text" colour="#a55b5b">
+	    <block type="text">
+	      <field name="TEXT"></field>
+	    </block>
+	    <block type="text_print">
+	      <value name="TEXT">
+	        <shadow type="text">
+	          <field name="TEXT">abc</field>
+	        </shadow>
+	      </value>
+	    </block>
+	  </category>
+	  <category name="Prueba bloques" colour="#805ba5">
+	  <block type="hola_mundo"></block>
+	  </category>
+	</xml>
+</body>
+</html>
