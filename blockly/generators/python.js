@@ -176,6 +176,9 @@ Blockly.Python.init = function(workspace) {
  */
 Blockly.Python.finish = function(code) {
   // Convert the definitions dictionary into a list.
+
+  var compute = 'Código que no va a cambiar\n'
+
   var imports = [];
   var definitions = [];
   for (var name in Blockly.Python.definitions_) {
@@ -190,7 +193,7 @@ Blockly.Python.finish = function(code) {
   delete Blockly.Python.definitions_;
   delete Blockly.Python.functionNames_;
   Blockly.Python.variableDB_.reset();
-  var allDefs = imports.join('\n') + '\n\n' + definitions.join('\n\n');
+  var allDefs =  compute +imports.join('\n') + '\n\n' + definitions.join('\n\n');
   return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n') + code;
 };
 

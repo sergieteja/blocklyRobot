@@ -44,15 +44,16 @@ Blockly.Constants.Accion.HUE = 270;
 /** @deprecated Use Blockly.Constants.Colour.HUE */
 Blockly.Blocks.acciones.HUE = Blockly.Constants.Accion.HUE;
 
+/**
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for colour picker.
   {
-  "type": "block_accion",
+  "type": "blocky_accion",
   "message0": "Acción %1",
   "args0": [
     {
       "type": "input_value",
-      "name": "type",
+      "name": "tipo",
       "check": "String"
     }
   ],
@@ -63,4 +64,71 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": ""
 }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
+*/
+
+
+
+/**
+  Bloques nuevos definidos
+*/
+Blockly.Blocks['camino_libre'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("camino_libre");
+    this.setOutput(true, "Boolean");
+    this.setColour(230);
+    this.setTooltip('Función camino libre');
+    this.setHelpUrl('https://github.com/sergieteja/blocklyRobot');
+  }
+};
+
+Blockly.Blocks['avanzar'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("avanzar");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+
+Blockly.Blocks['gira_izq'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("girar_izq");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['sigue_linea'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("sigue_linea");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['parar_base'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("para_base");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
 
