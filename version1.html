@@ -29,6 +29,22 @@
 	      position: absolute;
 	    }
 
+
+    #bloques {
+      text-align: center;
+      padding-right: 51px;
+      padding-left: 50px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      background-color: #ddd;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 5px 19px;
+    }
+    
+    
 		
 	</style>
 
@@ -63,16 +79,17 @@
 				element = element.offsetParent;
 			} while (element);
 			// Position blocklyDiv over blocklyArea.
-			blocklyDiv.style.left = x+10 + 'px';
-			blocklyDiv.style.top = y+10 +'px';
-			blocklyDiv.style.width = blocklyArea.offsetWidth-10 + 'px';
-			blocklyDiv.style.height = blocklyArea.offsetHeight-10 + 'px';
+			blocklyDiv.style.left = x + 'px';
+			blocklyDiv.style.top = y +'px';
+			blocklyDiv.style.width = blocklyArea.offsetWidth+ 'px';
+			blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
 
 			//Position textarea_python 
-			textarea_python.style.left = x+10 + 'px';
-			textarea_python.style.top = y+10 +'px';
-			textarea_python.style.width = blocklyArea.offsetWidth-10 + 'px';
-			textarea_python.style.height = blocklyArea.offsetHeight-10 + 'px';
+			textarea_python.style.left = x + 'px';
+			textarea_python.style.top = y +'px';
+			textarea_python.style.width = blocklyArea.offsetWidth + 'px';
+			textarea_python.style.height = blocklyArea.offsetHeight + 'px';
+  
 		};
 
 		window.addEventListener('resize', onresize, false);
@@ -105,9 +122,14 @@
  
 <body onload="inicio()">
 	
+  <div >  
+    <span id = "bloques">Bloques</span>
+    <button id = "buttonBlockly" onclick="load_blockly()"> Blockly </button>
+    <button id = "buttonPython"onclick="load_python()"> Python </button>
+</div>
 
-<button onclick="load_blockly()"> Blockly </button>
-<button onclick="load_python()"> Python </button>
+  
+
 
 
 <div id="blocklyArea"> </div>
