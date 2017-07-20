@@ -5,16 +5,11 @@ goog.provide('Blockly.Python.Accion');
 goog.require('Blockly.Python');
 
 
-Blockly.Python['camino_libre'] = function(block) {
-
-  var code = 'camino_libre()\n'
-
-  return code;
-};
-
 Blockly.Python['move_left'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = 'move_left\n';
+
+  var duration = this.getFieldValue('DURATION');
+  var code = 'functions.get("move_left")(lbot,' + duration + ')\n';
   return code;
 };
 

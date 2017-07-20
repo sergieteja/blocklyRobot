@@ -44,29 +44,6 @@ Blockly.Constants.Motor.HUE = 270;
 /** @deprecated Use Blockly.Constants.Colour.HUE */
 Blockly.Blocks.motor.HUE = Blockly.Constants.Motor.HUE;
 
-/**
-Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
-  // Block for colour picker.
-  {
-  "type": "blocky_accion",
-  "message0": "Acción %1",
-  "args0": [
-    {
-      "type": "input_value",
-      "name": "tipo",
-      "check": "String"
-    }
-  ],
-  "inputsInline": true,
-  "nextStatement": "signal",
-  "colour": 330,
-  "tooltip": "",
-  "helpUrl": ""
-}
-]);  // END JSON EXTRACT (Do not delete this comment.)
-*/
-
-
 
 /**
   Bloques motor
@@ -74,12 +51,14 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 Blockly.Blocks['move_left'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("move_left");
+        .appendField("move_left")
+        .appendField(new Blockly.FieldNumber(0, 0, 100), "DURATION")
+        .appendField("segundos");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
-    this.setTooltip('Funcion mover a la izquierda');
-    this.setHelpUrl('https://github.com/sergieteja/blocklyRobot');
+    this.setTooltip('');
+    this.setHelpUrl('');
   }
 };
 
