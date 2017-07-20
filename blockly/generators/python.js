@@ -176,8 +176,36 @@ Blockly.Python.init = function(workspace) {
  */
 Blockly.Python.finish = function(code) {
   // Convert the definitions dictionary into a list.
+/**
+  var compute = "import sys\n import cv2\n import LearnBotClient\n from functions import *\n"
+import time
 
-  var compute = 'Código que no va a cambiar\n'
+global lbot
+lbot = LearnBotClient.Client(sys.argv)
+
+# To keep track of the speed of Learnbot
+lbot.adv, lbot.rot= 0,0
+
+#####################
+#	 CODE BEGINS	#
+#####################"
+**/
+
+  var compute = `import sys
+import cv2
+import LearnBotClient
+from functions import *
+import time
+
+global lbot
+lbot = LearnBotClient.Client(sys.argv)
+
+# To keep track of the speed of Learnbot
+lbot.adv, lbot.rot= 0,0
+
+#####################
+#	 CODE BEGINS	#
+#####################`;
 
   var imports = [];
   var definitions = [];
